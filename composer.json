@@ -1,0 +1,21 @@
+{
+    "name": "cborgas/toy-robot",
+    "description": "Simulation of a toy robot moving on a square tabletop.",
+    "authors": [
+        {
+            "name": "Carl Borgas",
+            "email": "carlborgas@gmail.com"
+        }
+    ],
+    "type": "project",
+    "config": {
+        "platform": {
+            "php": "7.4.3"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    },
+    "require": {
+    }
+}
