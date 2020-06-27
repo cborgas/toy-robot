@@ -18,12 +18,18 @@ class Table
 
     private Origin $origin;
 
-    /**
-     * @param Origin|null $origin
-     */
-    public function __construct(?Origin $origin = null)
+    public static function create(): Table
     {
-        $this->origin = $origin ?? new Origin();
+        $origin = new Origin();
+        return new self($origin);
+    }
+
+    /**
+     * @param Origin $origin
+     */
+    public function __construct(Origin $origin)
+    {
+        $this->origin = $origin;
     }
 
     /**
@@ -79,6 +85,4 @@ class Table
         $this->width = $width;
         return $this;
     }
-
-
 }
