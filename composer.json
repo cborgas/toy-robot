@@ -18,8 +18,14 @@
             "ToyRobot\\": "src/ToyRobot/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ToyRobot\\Unit\\": "tests/ToyRobot/Unit/"
+        }
+    },
     "require-dev": {
-        "phpunit/phpunit": "^9.2"
+        "phpunit/phpunit": "^9.2",
+        "mockery/mockery": "^1.4"
     },
     "require": {
         "symfony/console": "^5.1",

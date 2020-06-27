@@ -13,7 +13,17 @@ class TableTest extends \PHPUnit\Framework\TestCase
      */
     public function table_is_instantiable(): void
     {
-        $table = new Table();
+        $origin = new Table\Origin();
+        $table = new Table($origin);
+        $this->assertInstanceOf(Table::class, $table);
+    }
+
+    /**
+     * @test
+     */
+    public function table_is_statically_instantiable(): void
+    {
+        $table = Table::create();
         $this->assertInstanceOf(Table::class, $table);
     }
 
@@ -22,7 +32,7 @@ class TableTest extends \PHPUnit\Framework\TestCase
      */
     public function can_get_and_set_table_height(): void
     {
-        $table = new Table();
+        $table = Table::create();
         $table->setHeight(10);
         $this->assertEquals(10, $table->getHeight());
     }
@@ -31,7 +41,7 @@ class TableTest extends \PHPUnit\Framework\TestCase
      */
     public function can_get_and_set_table_width(): void
     {
-        $table = new Table();
+        $table = Table::create();
         $table->setWidth(20);
         $this->assertEquals(20, $table->getWidth());
     }
@@ -41,7 +51,7 @@ class TableTest extends \PHPUnit\Framework\TestCase
      */
     public function cannot_set_table_height_to_negative_integer(): void
     {
-        $table = new Table();
+        $table = Table::create();
         $this->expectException(InvalidHeightException::class);
         $table->setHeight(-3);
     }
@@ -51,7 +61,7 @@ class TableTest extends \PHPUnit\Framework\TestCase
      */
     public function cannot_set_table_width_to_negative_integer(): void
     {
-        $table = new Table();
+        $table = Table::create();
         $this->expectException(InvalidWidthException::class);
         $table->setWidth(-4);
     }

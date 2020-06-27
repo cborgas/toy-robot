@@ -14,7 +14,7 @@ class PositionTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         // Setup a default table with default origin, height and width
-        self::$defaultTable = new Table();
+        self::$defaultTable = Table::create();
     }
 
     /**
@@ -68,7 +68,7 @@ class PositionTest extends \PHPUnit\Framework\TestCase
     public function cannot_set_position_x_coordinate_outside_of_table_height()
     {
         $xCoordinate = 10;
-        $table = (new Table())
+        $table = (Table::create())
             ->setHeight($xCoordinate + 1)
             ->setWidth($xCoordinate - 1);
 
@@ -99,7 +99,7 @@ class PositionTest extends \PHPUnit\Framework\TestCase
     public function cannot_set_position_y_coordinate_outside_of_table_height()
     {
         $yCoordinate = 10;
-        $table = (new Table())
+        $table = (Table::create())
             ->setHeight($yCoordinate - 1)
             ->setWidth($yCoordinate + 1);
 

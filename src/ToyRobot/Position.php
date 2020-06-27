@@ -9,9 +9,9 @@ class Position implements Coordinate
 {
     private Table $table;
 
-    private int $xCoordinate;
+    private int $x;
 
-    private int $yCoordinate;
+    private int $y;
 
     public function __construct(Table $table)
     {
@@ -20,14 +20,14 @@ class Position implements Coordinate
 
     public function getX(): int
     {
-        return $this->xCoordinate;
+        return $this->x;
     }
 
     public function setX(int $x): Position
     {
         $this->validateXCoordinate($x);
 
-        $this->xCoordinate = $x;
+        $this->x = $x;
 
         return $this;
     }
@@ -52,14 +52,14 @@ class Position implements Coordinate
 
     public function getY(): int
     {
-        return $this->yCoordinate;
+        return $this->y;
     }
 
     public function setY(int $y): Position
     {
         $this->validateYCoordinate($y);
 
-        $this->yCoordinate = $y;
+        $this->y = $y;
 
         return $this;
     }
