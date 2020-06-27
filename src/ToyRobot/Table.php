@@ -2,6 +2,7 @@
 
 namespace ToyRobot;
 
+use ToyRobot\Table\Origin;
 use ToyRobot\Exception\Table\InvalidHeightException;
 use ToyRobot\Exception\Table\InvalidWidthException;
 
@@ -14,6 +15,24 @@ class Table
     public int $height = self::DEFAULT_HEIGHT;
 
     public int $width = self::DEFAULT_WIDTH;
+
+    private Origin $origin;
+
+    /**
+     * @param Origin|null $origin
+     */
+    public function __construct(?Origin $origin = null)
+    {
+        $this->origin = $origin ?? new Origin();
+    }
+
+    /**
+     * @return Origin
+     */
+    public function getOrigin(): Origin
+    {
+        return $this->origin;
+    }
 
     /**
      * @return int
@@ -49,6 +68,7 @@ class Table
     /**
      * @param int $width
      * @return Table
+     * @throws InvalidWidthException
      */
     public function setWidth(int $width): Table
     {
