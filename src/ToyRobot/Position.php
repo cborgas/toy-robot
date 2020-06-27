@@ -44,8 +44,8 @@ class Position implements Coordinate
             throw new InvalidXCoordinateException();
         }
 
-        // The position cannot be outside of the height of the table
-        if ($x > $this->table->getHeight()) {
+        // The position cannot be outside of the width of the table
+        if ($x > $this->table->getWidth()) {
             throw new InvalidXCoordinateException();
         }
     }
@@ -73,6 +73,11 @@ class Position implements Coordinate
     {
         // The position cannot be outside the origin
         if ($y < $this->table->getOrigin()->getY()) {
+            throw new InvalidYCoordinateException();
+        }
+
+        // The position cannot be outside of the height of the table
+        if ($y > $this->table->getHeight()) {
             throw new InvalidYCoordinateException();
         }
     }

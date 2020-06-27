@@ -51,9 +51,15 @@ class PositionTest extends \PHPUnit\Framework\TestCase
      */
     public function cannot_set_position_x_coordinate_outside_of_table_origin()
     {
-        $position = new Position(self::$defaultTable);
+        $xCoordinate = -3;
+        $origin = (new Table\Origin())
+            ->setX($xCoordinate + 1)
+            ->setY($xCoordinate - 1);
+
+        $table = new Table($origin);
+        $position = new Position($table);
         $this->expectException(InvalidXCoordinateException::class);
-        $position->setX(-6);
+        $position->setX($xCoordinate);
     }
 
     /**
@@ -61,9 +67,14 @@ class PositionTest extends \PHPUnit\Framework\TestCase
      */
     public function cannot_set_position_x_coordinate_outside_of_table_height()
     {
-        $position = new Position(self::$defaultTable);
+        $xCoordinate = 10;
+        $table = (new Table())
+            ->setHeight($xCoordinate + 1)
+            ->setWidth($xCoordinate - 1);
+
+        $position = new Position($table);
         $this->expectException(InvalidXCoordinateException::class);
-        $position->setX(7);
+        $position->setX($xCoordinate);
     }
 
     /**
@@ -71,9 +82,15 @@ class PositionTest extends \PHPUnit\Framework\TestCase
      */
     public function cannot_set_position_y_coordinate_outside_of_table_origin()
     {
-        $position = new Position(self::$defaultTable);
+        $yCoordinate = -2;
+        $origin = (new Table\Origin())
+            ->setX($yCoordinate - 1)
+            ->setY($yCoordinate + 1);
+
+        $table = new Table($origin);
+        $position = new Position($table);
         $this->expectException(InvalidYCoordinateException::class);
-        $position->setY(-6);
+        $position->setY($yCoordinate);
     }
 
     /**
@@ -81,8 +98,13 @@ class PositionTest extends \PHPUnit\Framework\TestCase
      */
     public function cannot_set_position_y_coordinate_outside_of_table_height()
     {
-        $position = new Position(self::$defaultTable);
+        $yCoordinate = 10;
+        $table = (new Table())
+            ->setHeight($yCoordinate - 1)
+            ->setWidth($yCoordinate + 1);
+
+        $position = new Position($table);
         $this->expectException(InvalidYCoordinateException::class);
-        $position->setY(7);
+        $position->setY($yCoordinate);
     }
 }
