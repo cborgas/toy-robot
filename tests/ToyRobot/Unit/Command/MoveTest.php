@@ -107,10 +107,9 @@ class MoveTest extends CommandTest
     /**
      * @test
      */
-    public function receiver_cannot_move_south_from_origin()
+    public function receiver_cannot_move_south_from_bottom()
     {
-        $receiver = new Receiver();
-        $receiver->directionContext = Context::create();
+        $receiver = Receiver::create();
         $table = Table::create();
         $receiver->position = new Position($table);
         $receiver->position->setX(0)->setY(0);
@@ -123,14 +122,43 @@ class MoveTest extends CommandTest
     /**
      * @test
      */
-    public function receiver_cannot_move_west_from_origin()
+    public function receiver_cannot_move_west_from_left_side()
     {
-        $receiver = new Receiver();
-        $receiver->directionContext = Context::create();
+        $receiver = Receiver::create();
         $table = Table::create();
         $receiver->position = new Position($table);
         $receiver->position->setX(0)->setY(0);
         $receiver->directionContext->setDirection(new West());
+        $move = new Command\Move(self::$output, $receiver);
+        $this->expectException(InvalidXCoordinateException::class);
+        $move->execute();
+    }
+
+    /**
+     * @test
+     */
+    public function receiver_cannot_move_north_from_top()
+    {
+        $receiver = Receiver::create();
+        $table = Table::create();
+        $receiver->position = new Position($table);
+        $receiver->position->setX(0)->setY(5);
+        $receiver->directionContext->setDirection(new North());
+        $move = new Command\Move(self::$output, $receiver);
+        $this->expectException(InvalidYCoordinateException::class);
+        $move->execute();
+    }
+
+    /**
+     * @test
+     */
+    public function receiver_cannot_move_east_from_right_side()
+    {
+        $receiver = Receiver::create();
+        $table = Table::create();
+        $receiver->position = new Position($table);
+        $receiver->position->setX(5)->setY(0);
+        $receiver->directionContext->setDirection(new East());
         $move = new Command\Move(self::$output, $receiver);
         $this->expectException(InvalidXCoordinateException::class);
         $move->execute();
