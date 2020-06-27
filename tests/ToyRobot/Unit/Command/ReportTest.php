@@ -3,9 +3,8 @@
 namespace ToyRobot\Unit\Command;
 
 use ToyRobot\Command;
-use ToyRobot\Direction\North;
 
-class ReportTest extends CommandTest
+class ReportTest extends \ToyRobot\Unit\Command\Command
 {
     /**
      * @test

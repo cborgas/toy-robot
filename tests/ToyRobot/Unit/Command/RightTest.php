@@ -5,7 +5,7 @@ namespace ToyRobot\Unit\Command;
 use ToyRobot\Command;
 use ToyRobot\Direction\North;
 
-class RightTest extends CommandTest
+class RightTest extends \ToyRobot\Unit\Command\Command
 {
     /**
      * @test

@@ -6,7 +6,7 @@ use ToyRobot\Direction\Context;
 use ToyRobot\Position;
 
 /**
- * A direction can turn left or right
+ * A direction can turn left or right, or perform a move on a position.
  */
 interface Direction
 {
