@@ -14,7 +14,7 @@ use ToyRobot\Position;
 use ToyRobot\Table;
 use ToyRobot\Unit\Mock\Receiver;
 
-class MoveTest extends CommandTest
+class MoveTest extends \ToyRobot\Unit\Command\Command
 {
     /**
      * @test

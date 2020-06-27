@@ -6,7 +6,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use ToyRobot\Command\Receiver;
 use ToyRobot\Unit\Mock;
 
-class CommandTest extends \PHPUnit\Framework\TestCase
+class Command extends \PHPUnit\Framework\TestCase
 {
     protected static Mock\Output $output;
 
@@ -21,14 +21,5 @@ class CommandTest extends \PHPUnit\Framework\TestCase
     {
         self::$receiver = Mock\Receiver::create();
         self::$output = \Mockery::mock(Mock\Output::class);
-    }
-
-    /**
-     * @test
-     */
-    public function test_mock_dependencies()
-    {
-        $this->assertInstanceOf(Receiver::class, self::$receiver);
-        $this->assertInstanceOf(OutputInterface::class, self::$output);
     }
 }
