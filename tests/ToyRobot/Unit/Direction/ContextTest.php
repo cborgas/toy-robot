@@ -18,18 +18,9 @@ class ContextTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function direction_context_is_statically_instantiable()
-    {
-        $directionContext = Direction\Context::create();
-        $this->assertInstanceOf(Direction\Context::class, $directionContext);
-    }
-
-    /**
-     * @test
-     */
     public function statically_instantiated_direction_is_facing_north()
     {
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context())->setDirection(new Direction\North());
         $this->assertEquals('north', $directionContext->toString());
     }
 
@@ -38,7 +29,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
      */
     public function can_set_direction_on_direction_context()
     {
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context())->setDirection(new Direction\North());
         $directionContext->setDirection(new Direction\West());
         $this->assertEquals('west', $directionContext->toString());
     }
@@ -48,7 +39,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
      */
     public function direction_context_can_turn_right()
     {
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context())->setDirection(new Direction\North());
         $directionContext->turnRight();
         $this->assertEquals('east', $directionContext->toString());
     }
@@ -58,7 +49,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
      */
     public function direction_context_can_turn_left()
     {
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context())->setDirection(new Direction\North());
         $directionContext->turnLeft();
         $this->assertEquals('west', $directionContext->toString());
     }
@@ -68,7 +59,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
      */
     public function direction_context_can_turn_right_seven_times()
     {
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context())->setDirection(new Direction\North());
 
         foreach(range(1,7) as $iteration) {
             $directionContext->turnRight();
@@ -82,7 +73,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
      */
     public function direction_context_can_turn_left_ten_times()
     {
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context())->setDirection(new Direction\North());
 
         foreach(range(1,10) as $iteration) {
             $directionContext->turnLeft();

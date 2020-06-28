@@ -2,24 +2,12 @@
 
 namespace ToyRobot\Direction;
 
+use ToyRobot\Exception\Context\DirectionNotSetException;
 use ToyRobot\Position;
 
 class Context
 {
-    private Direction $direction;
-
-    /**
-     * Create a new context facing north
-     *
-     * @return Context
-     */
-    public static function create(): Context
-    {
-        $directionContext = new self();
-        $directionContext->direction = new North();
-
-        return $directionContext;
-    }
+    private ?Direction $direction = null;
 
     public function setDirection(Direction $direction): Context
     {
@@ -30,21 +18,30 @@ class Context
 
     public function turnRight()
     {
-        $this->direction->turnRight($this);
+        $this->getDirection()->turnRight($this);
     }
 
     public function turnLeft()
     {
-        $this->direction->turnLeft($this);
+        $this->getDirection()->turnLeft($this);
     }
 
     public function move(Position $position, int $step)
     {
-        $this->direction->move($position, $step);
+        $this->getDirection()->move($position, $step);
     }
 
     public function toString(): string
     {
-        return $this->direction->toSting();
+        return $this->getDirection()->toSting();
+    }
+
+    private function getDirection(): Direction
+    {
+        if (is_null($this->direction)) {
+            throw new DirectionNotSetException();
+        }
+
+        return $this->direction;
     }
 }

@@ -64,3 +64,23 @@ Output
 ```
 3,1,NORTH
 ```
+
+---
+Input
+```
+MOVE
+LEFT
+REPORT
+RIGHT
+REPORT
+PLACE 0,0,NORTH
+PLACE -1,-1,NORTH
+MOVE
+REPORT
+```
+
+Output
+- The only valid commands from the above input are `PLACE 0,0,NORTH`, `MOVE` and the final `REPORT`
+```
+0,1,NORTH
+```

@@ -4,14 +4,16 @@ namespace ToyRobot;
 
 use ToyRobot\Exception\Position\InvalidXCoordinateException;
 use ToyRobot\Exception\Position\InvalidYCoordinateException;
+use ToyRobot\Exception\Position\XCoordinateNotSetException;
+use ToyRobot\Exception\Position\YCoordinateNotSetException;
 
 class Position implements Coordinate
 {
     private Table $table;
 
-    private int $x;
+    private ?int $x = null;
 
-    private int $y;
+    private ?int $y = null;
 
     public function __construct(Table $table)
     {
@@ -20,6 +22,10 @@ class Position implements Coordinate
 
     public function getX(): int
     {
+        if (!is_int($this->x)) {
+            throw new XCoordinateNotSetException();
+        }
+
         return $this->x;
     }
 
@@ -52,6 +58,10 @@ class Position implements Coordinate
 
     public function getY(): int
     {
+        if (!is_int($this->y)) {
+            throw new YCoordinateNotSetException();
+        }
+
         return $this->y;
     }
 

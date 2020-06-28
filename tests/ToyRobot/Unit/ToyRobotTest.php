@@ -37,7 +37,7 @@ class ToyRobotTest extends \PHPUnit\Framework\TestCase
     public function can_set_and_get_toy_robot_direction(): void
     {
         $toyRobot = new ToyRobot();
-        $directionContext = Direction\Context::create();
+        $directionContext = (new Direction\Context());
         $toyRobot->directionContext = $directionContext;
         $this->assertInstanceOf(
             Direction\Context::class,

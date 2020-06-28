@@ -4,7 +4,10 @@ namespace ToyRobot\Unit\App;
 
 use ToyRobot\App;
 use ToyRobot\Command\Factory\DefaultFactory;
-use ToyRobot\Direction\Context;
+use ToyRobot\Direction;
+use ToyRobot\Exception\Context\DirectionNotSetException;
+use ToyRobot\Exception\Position\XCoordinateNotSetException;
+use ToyRobot\Exception\Position\YCoordinateNotSetException;
 use ToyRobot\Position;
 use ToyRobot\Table;
 use ToyRobot\ToyRobot;
@@ -19,7 +22,7 @@ class GameTest extends \PHPUnit\Framework\TestCase
     {
         $table = Table::create();
         $toyRobot = new ToyRobot();
-        $toyRobot->directionContext = Context::create();
+        $toyRobot->directionContext = new Direction\Context();
         $toyRobot->position = new Position($table);
         $output = new App\Output\StdOut();
         $commandFactory = new DefaultFactory($output);
@@ -50,9 +53,9 @@ class GameTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function can_execute_command_without_arguments_on_game()
+    public function can_execute_commands_on_game()
     {
-        $game = new Mock\Game(['right']);
+        $game = new Mock\Game(['place 0,0,north', 'right']);
         $game->run();
         $direction = $game->getToyRobot()->directionContext->toString();
         $this->assertEquals('east', $direction);
@@ -126,6 +129,65 @@ class GameTest extends \PHPUnit\Framework\TestCase
         $direction = $game->getToyRobot()->directionContext->toString();
         $position = $game->getToyRobot()->position;
         $this->assertEquals('east', $direction);
+        $this->assertEquals(3, $position->getX());
+        $this->assertEquals(0, $position->getY());
+    }
+
+    /**
+     * @test
+     */
+    public function cannot_execute_commands_and_get_position_without_placement()
+    {
+        $game = new Mock\Game([
+            'MOVE',
+            'Hello There',
+            'MOVE',
+            'MOVE'
+        ]);
+        $game->run();
+        $this->expectException(YCoordinateNotSetException::class);
+        $game->getToyRobot()->position->getY();
+        $this->expectException(XCoordinateNotSetException::class);
+        $game->getToyRobot()->position->getX();
+    }
+
+    /**
+     * @test
+     */
+    public function cannot_execute_commands_and_get_direction_without_placement()
+    {
+        $game = new Mock\Game([
+            'MOVE',
+            'MOVE',
+            'MOVE',
+            'LEFT'
+        ]);
+        $game->run();
+        $this->expectException(DirectionNotSetException::class);
+        $game->getToyRobot()->directionContext->toString();
+    }
+
+    /**
+     * @test
+     */
+    public function can_execute_multiple_commands_on_game_and_ignore_commands_before_place()
+    {
+        $game = new Mock\Game([
+            'MOVE',
+            'LEFT',
+            'RIGHT',
+            'REPORT',
+            'PLACE 0,0,EAST',
+            'MOVE',
+            'MOVE',
+            'MOVE',
+            'RIGHT'
+        ]);
+
+        $game->run();
+        $direction = $game->getToyRobot()->directionContext->toString();
+        $position = $game->getToyRobot()->position;
+        $this->assertEquals('south', $direction);
         $this->assertEquals(3, $position->getX());
         $this->assertEquals(0, $position->getY());
     }
