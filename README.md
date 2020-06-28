@@ -1,13 +1,13 @@
-#cborgas/toy-robot
+# cborgas/toy-robot
 Simulation of a toy robot moving on a square tabletop
 
-##Description
+## Description
 - The application is a simulation of a toy robot moving on a square 5 by 5 unit tabletop.
 - The robot can be placed, moved or oriented on the tabletop.
 - Any movement that would result in the robot falling from the table will be prevented, 
   however further valid movement commands will be allowed.
 
-##Commands
+## Commands
 See [examples](docs/EXAMPLES.md)
 - `PLACE` will put the toy robot on the table in position X,Y and facing NORTH,
   SOUTH, EAST or WEST. This is the first valid command to the robot is a `PLACE` command, 
@@ -20,7 +20,7 @@ See [examples](docs/EXAMPLES.md)
 - `REPORT` will announce the X Coordinate,Y Coordinate and the direction of the robot to the CLI.
 
 
-##How to
+## How to
 1. Clone or download the project
 2. Install dependencies with composer
 3. Create a file with a command on each line
