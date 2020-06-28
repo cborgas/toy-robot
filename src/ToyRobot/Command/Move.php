@@ -6,6 +6,9 @@ class Move extends \ToyRobot\Command
 {
     public const NUMBER_OF_STEPS = 1;
 
+    /**
+     * @inheritDoc
+     */
     public function execute(): void
     {
         $this->receiver->directionContext->move(

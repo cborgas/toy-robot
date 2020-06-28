@@ -6,6 +6,9 @@ use ToyRobot\Direction;
 
 class Place extends \ToyRobot\Command
 {
+    /**
+     * @inheritDoc
+     */
     public function execute(): void
     {
         $this->receiver->position->setX($this->getX());

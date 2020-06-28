@@ -23,6 +23,11 @@ class Run extends \Symfony\Component\Console\Command\Command
 
     private const FILE_ARGUMENT = 'file';
 
+    /**
+     * Configure the run command
+     *
+     * @return void
+     */
     public function configure()
     {
         $this->setDescription(
@@ -35,10 +40,21 @@ class Run extends \Symfony\Component\Console\Command\Command
             );
     }
 
+    /**
+     * Build and run the game
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $filePath = $input->getArgument(self::FILE_ARGUMENT);
 
+        /*
+         * @todo move building of the game to a service locator or at the very
+         * least a builder class
+         */
         $table = Table::create();
         $toyRobot = new ToyRobot();
         $toyRobot->directionContext = new Context();

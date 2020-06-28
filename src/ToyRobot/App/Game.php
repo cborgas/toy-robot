@@ -36,12 +36,11 @@ class Game extends Command\Invoker
         try {
             $this->executeCommands();
         } catch (NoMoreCommandsException $exception) {
-            //
+            // Finished executing commands
         }
     }
 
     /**
-     * @return void
      * @throws NoMoreCommandsException
      */
     private function executeCommands(): void

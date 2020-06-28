@@ -6,6 +6,9 @@ use ToyRobot\Position;
 
 class South implements Direction
 {
+    /**
+     * @inheritDoc
+     */
     public function toSting(): string
     {
         return 'south';
@@ -14,7 +17,7 @@ class South implements Direction
     /**
      * When facing south, turning right will point west
      *
-     * @param Context $context
+     * @inheritDoc
      */
     public function turnRight(Context $context): void
     {
@@ -24,7 +27,7 @@ class South implements Direction
     /**
      * When facing south, turning left will point east
      *
-     * @param Context $context
+     * @inheritDoc
      */
     public function turnLeft(Context $context): void
     {
@@ -35,8 +38,7 @@ class South implements Direction
      * When facing south, moving will decrease the value of the position on the
      * y axis
      *
-     * @param Position $position
-     * @param int $step
+     * @inheritDoc
      */
     public function move(Position $position, int $step): void
     {

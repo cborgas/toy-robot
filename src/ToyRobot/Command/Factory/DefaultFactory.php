@@ -18,6 +18,9 @@ class DefaultFactory implements Command\Factory
         $this->output = $output;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function createCommand(Receiver $receiver, string $command, ...$args): Command
     {
         switch (strtolower($command)) {

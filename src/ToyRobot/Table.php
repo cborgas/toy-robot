@@ -18,31 +18,27 @@ class Table
 
     private Origin $origin;
 
+    /**
+     * Create a table with an origin
+     *
+     * @return Table
+     */
     public static function create(): Table
     {
         $origin = new Origin();
         return new self($origin);
     }
 
-    /**
-     * @param Origin $origin
-     */
     public function __construct(Origin $origin)
     {
         $this->origin = $origin;
     }
 
-    /**
-     * @return Origin
-     */
     public function getOrigin(): Origin
     {
         return $this->origin;
     }
 
-    /**
-     * @return int
-     */
     public function getHeight(): int
     {
         return $this->height;
@@ -63,9 +59,6 @@ class Table
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getWidth(): int
     {
         return $this->width;

@@ -4,6 +4,9 @@ namespace ToyRobot\Command;
 
 class Report extends \ToyRobot\Command
 {
+    /**
+     * @inheritDoc
+     */
     public function execute(): void
     {
         $x = $this->receiver->position->getX();

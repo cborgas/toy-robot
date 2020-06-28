@@ -9,6 +9,10 @@ class Context
 {
     private ?Direction $direction = null;
 
+    /**
+     * @param Direction $direction
+     * @return $this
+     */
     public function setDirection(Direction $direction): Context
     {
         $this->direction = $direction;
@@ -16,17 +20,17 @@ class Context
         return $this;
     }
 
-    public function turnRight()
+    public function turnRight(): void
     {
         $this->getDirection()->turnRight($this);
     }
 
-    public function turnLeft()
+    public function turnLeft(): void
     {
         $this->getDirection()->turnLeft($this);
     }
 
-    public function move(Position $position, int $step)
+    public function move(Position $position, int $step): void
     {
         $this->getDirection()->move($position, $step);
     }

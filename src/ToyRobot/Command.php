@@ -20,5 +20,10 @@ abstract class Command
         $this->args = $args;
     }
 
+    /**
+     * Execute this command
+     *
+     * @return void
+     */
     abstract public function execute(): void;
 }
