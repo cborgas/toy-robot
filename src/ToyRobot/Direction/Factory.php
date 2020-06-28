@@ -1,9 +1,11 @@
 <?php
 
-
 namespace ToyRobot\Direction;
 
-class StaticFactory
+/**
+ * Static Factory for instantiating concrete directions
+ */
+class Factory
 {
     /**
      * Instantiate a concrete direction based on a given type

@@ -3,7 +3,6 @@
 namespace ToyRobot\Unit\Command;
 
 use ToyRobot\Command;
-use ToyRobot\Direction\East;
 use ToyRobot\Exception\Position\InvalidXCoordinateException;
 use ToyRobot\Exception\Position\InvalidYCoordinateException;
 use ToyRobot\Unit\Mock\Receiver;
