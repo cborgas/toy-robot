@@ -2,18 +2,18 @@
 
 namespace ToyRobot;
 
-use Symfony\Component\Console\Output\OutputInterface;
+use ToyRobot\App\Output;
 use ToyRobot\Command\Receiver;
 
 abstract class Command
 {
     protected Receiver $receiver;
 
-    protected OutputInterface $output;
+    protected Output $output;
 
     protected array $args;
 
-    public function __construct(OutputInterface $output, Receiver $receiver, ...$args)
+    public function __construct(Output $output, Receiver $receiver, ...$args)
     {
         $this->receiver = $receiver;
         $this->output = $output;

@@ -2,17 +2,26 @@
 
 namespace ToyRobot\Command;
 
+use LogicException;
 use ToyRobot\Command;
 
-interface Invoker
+abstract class Invoker
 {
-    /**
-     * @param Command $command
-     */
-    public function setCommand(Command $command): void;
+    protected Factory $commandFactory;
+
+    protected Receiver $receiver;
 
     /**
-     * Run the set command
+     * @param string $command
+     * @param mixed ...$args
      */
-    public function run(): void;
+    final protected function execute(string $command, ...$args): void
+    {
+        try {
+            $command = $this->commandFactory->createCommand($this->receiver, $command, ...$args);
+            $command->execute();
+        } catch (LogicException $exception) {
+            // Ignore logic exceptions
+        }
+    }
 }

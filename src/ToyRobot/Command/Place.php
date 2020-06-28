@@ -13,18 +13,18 @@ class Place extends \ToyRobot\Command
         $this->receiver->directionContext->setDirection($this->getDirection());
     }
 
-    private function getDirection(): Direction\Direction
-    {
-        return Direction\StaticFactory::factory($this->args[2]);
-    }
-
     private function getX(): int
     {
-        return (int) $this->args[0];
+        return $this->args[0];
     }
 
     private function getY(): int
     {
-        return (int) $this->args[1];
+        return $this->args[1];
+    }
+
+    private function getDirection(): Direction\Direction
+    {
+        return Direction\Factory::factory($this->args[2]);
     }
 }
