@@ -43,7 +43,7 @@ class Run extends \Symfony\Component\Console\Command\Command
         $toyRobot = new ToyRobot();
         $toyRobot->directionContext = new Context();
         $toyRobot->position = new Position($table);
-        $stdOut = new StdOut($output);
+        $stdOut = new StdOut();
         $commandFactory = new DefaultFactory($stdOut);
         $reader = new TextFile($filePath);
         $game = new Game($table, $toyRobot, $commandFactory, $reader);
