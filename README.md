@@ -1,4 +1,6 @@
 # cborgas/toy-robot
+![Tests](https://github.com/cborgas/toy-robot/workflows/Tests/badge.svg)
+
 Simulation of a toy robot moving on a square tabletop
 
 ## Description
