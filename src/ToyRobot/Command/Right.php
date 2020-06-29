@@ -9,6 +9,7 @@ class Right extends \ToyRobot\Command
      */
     public function execute(): void
     {
-        $this->receiver->directionContext->turnRight();
+        $this->receiver->directionContext->getDirection()
+            ->turnRight($this->receiver->directionContext);
     }
 }

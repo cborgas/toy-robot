@@ -40,7 +40,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
     public function direction_context_can_turn_right()
     {
         $directionContext = (new Direction\Context())->setDirection(new Direction\North());
-        $directionContext->turnRight();
+        $directionContext->getDirection()->turnRight($directionContext);
         $this->assertEquals('east', $directionContext->toString());
     }
 
@@ -50,7 +50,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
     public function direction_context_can_turn_left()
     {
         $directionContext = (new Direction\Context())->setDirection(new Direction\North());
-        $directionContext->turnLeft();
+        $directionContext->getDirection()->turnLeft($directionContext);
         $this->assertEquals('west', $directionContext->toString());
     }
 
@@ -62,7 +62,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
         $directionContext = (new Direction\Context())->setDirection(new Direction\North());
 
         foreach(range(1,7) as $iteration) {
-            $directionContext->turnRight();
+            $directionContext->getDirection()->turnRight($directionContext);
         }
 
         $this->assertEquals('west', $directionContext->toString());
@@ -76,7 +76,7 @@ class ContextTest extends \PHPUnit\Framework\TestCase
         $directionContext = (new Direction\Context())->setDirection(new Direction\North());
 
         foreach(range(1,10) as $iteration) {
-            $directionContext->turnLeft();
+            $directionContext->getDirection()->turnLeft($directionContext);
         }
 
         $this->assertEquals('south', $directionContext->toString());
