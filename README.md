@@ -1,5 +1,6 @@
 # cborgas/toy-robot
 ![Tests](https://github.com/cborgas/toy-robot/workflows/Tests/badge.svg)
+[![codecov](https://codecov.io/gh/cborgas/toy-robot/branch/master/graph/badge.svg)](https://codecov.io/gh/cborgas/toy-robot)
 
 Simulation of a toy robot moving on a square tabletop
 
