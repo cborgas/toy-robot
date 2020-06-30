@@ -2,7 +2,7 @@
 
 namespace ToyRobot\Command\Factory;
 
-use ToyRobot\App\Output;
+use Symfony\Component\Console\Output\OutputInterface;
 use ToyRobot\Command;
 use ToyRobot\Command\Receiver;
 
@@ -11,9 +11,9 @@ use ToyRobot\Command\Receiver;
  */
 class DefaultFactory implements Command\Factory
 {
-    protected Output $output;
+    protected OutputInterface $output;
 
-    public function __construct(Output $output)
+    public function __construct(OutputInterface $output)
     {
         $this->output = $output;
     }

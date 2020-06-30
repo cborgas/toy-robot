@@ -2,8 +2,6 @@
 
 namespace ToyRobot\Unit\Command;
 
-use Symfony\Component\Console\Output\OutputInterface;
-use ToyRobot\Command\Receiver;
 use ToyRobot\Unit\Mock;
 
 class Command extends \PHPUnit\Framework\TestCase

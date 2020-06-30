@@ -31,24 +31,23 @@ class Game extends Command\Invoker
         return $this->receiver;
     }
 
+    /**
+     * Run the game commands
+     */
     public function run(): void
     {
+        // Loop through commands until a no more commands exception is thrown
         try {
-            $this->executeCommands();
+            while (true) {
+                $appCommand = $this->commandReader->getNextCommand();
+
+                $this->execute(
+                    $appCommand->getCommand(),
+                    ...$appCommand->getArguments()
+                );
+            }
         } catch (NoMoreCommandsException $exception) {
             // Finished executing commands
-        }
-    }
-
-    /**
-     * @throws NoMoreCommandsException
-     */
-    private function executeCommands(): void
-    {
-        // Loop through commands until an exception is thrown
-        while(true) {
-            $appCommand = $this->commandReader->getNextCommand();
-            $this->execute($appCommand->getCommand(), ...$appCommand->getArguments());
         }
     }
 }

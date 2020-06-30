@@ -2,6 +2,7 @@
 
 namespace ToyRobot\Unit\App;
 
+use Symfony\Component\Console\Output\ConsoleOutput;
 use ToyRobot\App;
 use ToyRobot\Command\Factory\DefaultFactory;
 use ToyRobot\Direction;
@@ -24,10 +25,27 @@ class GameTest extends \PHPUnit\Framework\TestCase
         $toyRobot = new ToyRobot();
         $toyRobot->directionContext = new Direction\Context();
         $toyRobot->position = new Position($table);
-        $output = new App\Output\StdOut();
+        $output = new ConsoleOutput();
         $commandFactory = new DefaultFactory($output);
         $reader = new App\Command\Reader\ArrayReader([]);
         $game = new App\Game($table, $toyRobot, $commandFactory, $reader);
+        $this->assertInstanceOf(App\Game::class, $game);
+    }
+
+    /**
+     * @test
+     */
+    public function game_runs_without_exception()
+    {
+        $table = Table::create();
+        $toyRobot = new ToyRobot();
+        $toyRobot->directionContext = new Direction\Context();
+        $toyRobot->position = new Position($table);
+        $output = new ConsoleOutput();
+        $commandFactory = new DefaultFactory($output);
+        $reader = new App\Command\Reader\ArrayReader(['PLACE 0,0,NORTH, MOVE']);
+        $game = new App\Game($table, $toyRobot, $commandFactory, $reader);
+        $game->run();
         $this->assertInstanceOf(App\Game::class, $game);
     }
 

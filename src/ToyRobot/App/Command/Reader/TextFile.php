@@ -14,9 +14,13 @@ class TextFile implements App\Command\Reader
      */
     private $file;
 
+    /**
+     * @param string $file
+     * @throws \InvalidArgumentException
+     */
     public function __construct(string $file)
     {
-        $resource = fopen($file, "r");
+        $resource = @fopen($file, "r");
 
         if (!$resource) {
             throw new \InvalidArgumentException("File not found");

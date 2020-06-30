@@ -2,8 +2,8 @@
 
 namespace ToyRobot\Unit\Command;
 
+use Symfony\Component\Console\Output\ConsoleOutput;
 use ToyRobot\Command\Factory\DefaultFactory;
-use ToyRobot\App;
 
 class DefaultFactoryTest extends \PHPUnit\Framework\TestCase
 {
@@ -12,7 +12,7 @@ class DefaultFactoryTest extends \PHPUnit\Framework\TestCase
      */
     public function can_instantiate_default_factory()
     {
-        $output = new App\Output\StdOut();
+        $output = new ConsoleOutput();
         $commandFactory = new DefaultFactory($output);
         $this->assertInstanceOf(DefaultFactory::class, $commandFactory);
     }
