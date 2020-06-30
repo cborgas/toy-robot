@@ -6,6 +6,7 @@ class Report extends \ToyRobot\Command
 {
     /**
      * @inheritDoc
+     * @codeCoverageIgnore Covered in ToyRobot\Unit\Command\ReportTest
      */
     public function execute(): void
     {
