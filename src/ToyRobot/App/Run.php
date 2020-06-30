@@ -30,12 +30,12 @@ class Run extends \Symfony\Component\Console\Command\Command
     {
         $this->setDescription(
             "Run the game with commands from a given file"
-            )
-            ->addArgument(
-                self::FILE_ARGUMENT,
-                InputArgument::REQUIRED,
-                "Path of file"
-            );
+        )
+        ->addArgument(
+            self::FILE_ARGUMENT,
+            InputArgument::REQUIRED,
+            "Path of file"
+        );
     }
 
     /**
