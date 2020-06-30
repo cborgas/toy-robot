@@ -34,6 +34,23 @@ class GameTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
+    public function game_runs_without_exception()
+    {
+        $table = Table::create();
+        $toyRobot = new ToyRobot();
+        $toyRobot->directionContext = new Direction\Context();
+        $toyRobot->position = new Position($table);
+        $output = new App\Output\StdOut();
+        $commandFactory = new DefaultFactory($output);
+        $reader = new App\Command\Reader\ArrayReader(['PLACE 0,0,NORTH, MOVE']);
+        $game = new App\Game($table, $toyRobot, $commandFactory, $reader);
+        $game->run();
+        $this->assertInstanceOf(App\Game::class, $game);
+    }
+
+    /**
+     * @test
+     */
     public function can_statically_build_game()
     {
         $game = new Mock\Game([]);
