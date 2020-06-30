@@ -38,7 +38,7 @@ class Game extends Command\Invoker
     {
         // Loop through commands until a no more commands exception is thrown
         try {
-            while(true) {
+            while (true) {
                 $appCommand = $this->commandReader->getNextCommand();
 
                 $this->execute(
