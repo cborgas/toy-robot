@@ -9,6 +9,7 @@ class Left extends \ToyRobot\Command
      */
     public function execute(): void
     {
-        $this->receiver->directionContext->turnLeft();
+        $this->receiver->directionContext->getDirection()
+            ->turnLeft($this->receiver->directionContext);
     }
 }

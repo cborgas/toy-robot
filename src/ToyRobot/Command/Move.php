@@ -11,9 +11,7 @@ class Move extends \ToyRobot\Command
      */
     public function execute(): void
     {
-        $this->receiver->directionContext->move(
-            $this->receiver->position,
-            self::NUMBER_OF_STEPS
-        );
+        $this->receiver->directionContext->getDirection()
+            ->move($this->receiver->position, self::NUMBER_OF_STEPS);
     }
 }
